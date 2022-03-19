@@ -1,0 +1,108 @@
+Setup Azure windows VM as AAD Joined
+
+Log in with Remote Desktop to an Azure VM using Azure Active Directory
+
+
+
+
+
+
+RDP file settings
+
+Supported Remote Desktop RDP file settings | Microsoft Docs
+
+
+
+Enabling Azure VM to AAD joined
+
+
+	1. While creating VM please make sure it will be AAD joined & system assigned managed identity creation.
+	2. After vm creation verify AAD in azure portal for show up in devices.
+	3. Check for AAD extensions
+	4. For VM resource - grant role "Virtual Machine Adm Login" role to the AAD user that will be logging in through AAD joined
+		a. No need to give direct grant on the resource or subscription 
+		b. You can give through group at subscription level or resource level
+	5. Test RDP is working fine with local windows account --- opieemaster
+	6. Change time zone to CST
+	7. Update windows to latest patches
+	8. Run dsregcmd /status from command prompt as administrator
+	9. For RDP download file, you may want to edit parameters to add below
+		enablecredsspsupport:i:0 
+		authentication level:i:2
+	10. Allow RDC to the computer without Nw level authentication for time being
+	11. Now when logging in RDP use below combination
+	12. Userid:  AzureAD\avd100@opieecorp.onmicrosoft.com  / pwd
+	
+	
+	
+
+
+
+
+
+
+
+
+Vm info
+	a. Uid/pwd:    Opieemaster/Gr3atBlu3SharK#
+	b. Res group:  avd-nonprod-rg
+	c. Vm name:  avd-vm-adm101
+	d. Os version:  win server 2022
+	e. Region:  East US
+	f. Public IP:  20.115.20.8
+	g. Private ip: 10.6.2.4
+	h. RDP incoming port enabled from my IP through NSG attached to VM nic
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Avd100 & avd105 connecting to Opiee Corporation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
